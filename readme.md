@@ -1,3 +1,5 @@
+[Logo](static/images/logo.png)
+
 # Convertisseur de bases numériques
 
 Hello, voici mon mini-projet qui est un outil web interactif pour converir des nombres entre différentes bases numériques : Binaire (Base 2), Octal (Base 8), Décimal (Base 10) et Hexadécimal (Base 16).
