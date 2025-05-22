@@ -71,6 +71,13 @@ Parmi mes fonctionnalités, il y a :
 ce projet vise à fournir un outil pratique et éducatif pour la conversion entre les bases numériques courantes.
 Il démontre également l'intégration d'un frontend interactif avec une API bckend construite avec Flask.
 
+## Images de démonstration
+
+[Image demo 1](demo_images/images_demo1.PNG)
+[Image demo 2](demo_images/images_demo2.PNG)
+[Image demo 3](demo_images/images_demo3.PNG)
+[Image demo 4](demo_images/images_demo4.PNG)
+
 ## Installation et utilisation en locale
 
 * Vous pouvez télécharger le projet en format zip ou le cloner avec la commande git clone et ensuite accéder à ce projet avec la commande cd
