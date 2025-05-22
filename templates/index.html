@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertisseur de Bases Numériques</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/static/images/fav-icon.png" type="image/x-icon">
+</head>
+<body>
+    <header class="app-header">
+        <div class="container d-flex justify-content-center align-items-center py-3">
+            <img src="/static/images/logo.png" alt="Logo" class="header-logo mr-3" width="50" height="50">
+            <h1 class="app-title mb-0">Convertisseur de Bases Numériques</h1>
+        </div>
+    </header>
+
+    <main class="container mt-4">
+        <div class="converter-card p-4 p-md-5 shadow-lg">
+            <div class="form-group">
+                <label for="inputValue" class="input-label">Entrez la valeur à convertir :</label>
+                <input type="text" class="form-control form-control-lg input-field" id="inputValue" placeholder="Sélectionnez une base pour commencer" readonly>
+                <small id="inputError" class="form-text text-danger error-message d-none"></small>
+                <small id="selectedBaseInfo" class="form-text text-muted mt-1"></small>
+            </div>
+
+            <div class="base-selection-buttons my-4">
+                <p class="text-center mb-2 button-group-label">Sélectionnez la base d'origine :</p>
+                <div class="btn-group d-flex flex-wrap" role="group" aria-label="Bases de saisie">
+                    <button type="button" class="btn base-btn flex-fill m-1" data-base="2" data-pattern="^[01]+$" data-placeholder="Valeur binaire (0 et 1)">
+                        <i class="fas fa-barcode"></i> Binaire
+                    </button>
+                    <button type="button" class="btn base-btn flex-fill m-1" data-base="8" data-pattern="^[0-7]+$" data-placeholder="Valeur octale (0-7)">
+                        <i class="fas fa-dice-d8"></i> Octal </button>
+                    <button type="button" class="btn base-btn flex-fill m-1" data-base="10" data-pattern="^[0-9]+$" data-placeholder="Valeur décimale (0-9)">
+                        <i class="fas fa-list-ol"></i> Décimal
+                    </button>
+                    <button type="button" class="btn base-btn flex-fill m-1" data-base="16" data-pattern="^[0-9a-fA-F]+$" data-placeholder="Valeur hexadécimale (0-9, a-f)">
+                        <i class="fas fa-hashtag"></i> Hexadécimal
+                    </button>
+                </div>
+            </div>
+
+            <div class="action-buttons my-4 text-center">
+                <button type="button" class="btn btn-lg action-btn convert-btn m-1" id="convertBtn">
+                    <i class="fas fa-exchange-alt"></i> Convertir
+                </button>
+                <button type="button" class="btn btn-lg action-btn clear-btn m-1" id="clearBtn">
+                    <i class="fas fa-eraser"></i> Effacer
+                </button>
+            </div>
+
+            <hr class="my-4">
+
+            <h3 class="results-title text-center mb-3">Résultats :</h3>
+            <div class="row results-grid">
+                <div class="col-md-6 mb-3">
+                    <div class="result-box p-3">
+                        <strong class="result-label">Binaire :</strong>
+                        <span id="resultBinary" class="result-value">-</span>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="result-box p-3">
+                        <strong class="result-label">Octal :</strong>
+                        <span id="resultOctal" class="result-value">-</span>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="result-box p-3">
+                        <strong class="result-label">Décimal :</strong>
+                        <span id="resultDecimal" class="result-value">-</span>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="result-box p-3">
+                        <strong class="result-label">Hexadécimal :</strong>
+                        <span id="resultHexadecimal" class="result-value">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="app-footer text-center py-4 mt-5">
+        <div class="mb-2">
+            <a href="https://github.com/gshimatu" target="_blank" rel="noopener" class="mx-2 text-light" title="GitHub">
+                <i class="fab fa-github fa-lg"></i>
+            </a>
+            <a href="https://web.facebook.com/gauthier.shimtukabongo" target="_blank" rel="noopener" class="mx-2 text-light" title="Facebook">
+                <i class="fab fa-facebook fa-lg"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/gauthier-shimatu/" target="_blank" rel="noopener" class="mx-2 text-light" title="LinkedIn">
+                <i class="fab fa-linkedin fa-lg"></i>
+            </a>
+            <a href="https://www.instagram.com/gauthiershimatu/" target="_blank" rel="noopener" class="mx-2 text-light" title="Instagram">
+                <i class="fab fa-instagram fa-lg"></i>
+            </a>
+        </div>
+        <p class="mb-0">&copy; <span id="currentYear"></span> Gauthier Shimatu (Le Shimatologue). Tous droits réservés.</p>
+        <p class="mb-0">Convertisseur de Bases Numériques v1.0</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
