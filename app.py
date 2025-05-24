@@ -12,7 +12,7 @@ Fonctionnalités principales :
 
 Auteur : Gauthier Shimatu (Le shimatologue)
 Lien GitHub : https://github.com/gshimatu
-Version : 1.1
+Version : 1.3
 Date de création : 2025-05-19
 """
 
