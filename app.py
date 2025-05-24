@@ -62,14 +62,64 @@ def to_decimal_steps(value_str, base):
     steps.append(f"Total = {total}")
     return total, steps
 
+def get_conversion_steps(value_str, from_base, to_base):
+    """Retourne les étapes de conversion de value_str (from_base) vers to_base."""
+    steps = []
+    # 1. Conversion en décimal (toujours nécessaire)
+    try:
+        decimal = int(value_str, from_base)
+    except Exception:
+        return ["Valeur invalide."]
+    if to_base == 10:
+        # Étapes pour aller vers décimal
+        chars = list(value_str.lower())
+        chars.reverse()
+        total = 0
+        for i, c in enumerate(chars):
+            n = int(c, from_base)
+            step = f"{c} × {from_base}^{i} = {n * (from_base ** i)}"
+            steps.append(step)
+            total += n * (from_base ** i)
+        steps.reverse()
+        steps.append(f"Total = {total}")
+        return steps
+    else:
+        # Étapes pour aller vers octal ou hexadécimal
+        steps.append(f"Conversion en décimal : {value_str} (base {from_base}) = {decimal} (base 10)")
+        if to_base == 8:
+            result = oct(decimal)[2:]
+            steps.append(f"Conversion du décimal {decimal} en octal : {result}")
+        elif to_base == 16:
+            result = hex(decimal)[2:].upper()
+            steps.append(f"Conversion du décimal {decimal} en hexadécimal : {result}")
+        return steps
+
 @app.route('/')
 def index():
     return render_template('index.html')
 
 @app.route('/steps')
 def steps():
-    steps = session.get("steps", [])
-    return render_template("steps.html", steps=steps)
+    # Récupère les infos de la session
+    value = session.get("last_input_value", "")
+    from_base = session.get("last_from_base", 10)
+    bases = [
+        {"name": "Octal", "base": 8},
+        {"name": "Décimal", "base": 10},
+        {"name": "Hexadécimal", "base": 16}
+    ]
+    # Base cible par défaut (décimal)
+    selected_base = int(request.args.get("to_base", 10))
+    steps_dict = {}
+    for b in bases:
+        if b["base"] != from_base:
+            steps_dict[b["base"]] = get_conversion_steps(value, from_base, b["base"])
+    return render_template(
+        "steps.html",
+        bases=[b for b in bases if b["base"] != from_base],
+        selected_base=selected_base,
+        steps=steps_dict.get(selected_base, [])
+    )
 
 @app.route('/api/convert', methods=['POST'])
 def convert_api():
@@ -118,6 +168,9 @@ def convert_api():
     # Vérification si toutes les conversions ont réussi
     if any(val is None for val in results.values()):
         return jsonify({"error": "Erreur lors de la conversion vers l'une des bases de destination."}), 500
+
+    session["last_input_value"] = input_value_str
+    session["last_from_base"] = from_base
 
     return jsonify({
         "original_value": input_value_str,

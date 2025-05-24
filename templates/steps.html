@@ -20,6 +20,14 @@
     <main class="container mt-4">
         <div class="converter-card p-4 p-md-5 shadow-lg">
             <h2 class="mb-4 text-center"><i class="fas fa-list-ol"></i> Détail des étapes</h2>
+            <div class="text-center mb-4">
+                {% for b in bases %}
+                    <a href="{{ url_for('steps') }}?to_base={{ b.base }}"
+                       class="btn btn-outline-primary {% if b.base == selected_base %}active{% endif %} mx-1">
+                        {{ b.name }}
+                    </a>
+                {% endfor %}
+            </div>
             <div id="stepsContent">
                 <!-- Les étapes seront injectées ici -->
                 {% if steps %}
