@@ -3,7 +3,7 @@
 # Nom du fichier         : app.py
 # Date de création       : 2025-05-19 21:21:43
 # Description            : Fichier principal de l'application Flask pour la conversion de bases numériques.
-# Version                : 1.0
+# Version                : 1.1
 
 
 from flask import Flask, request, jsonify, render_template
