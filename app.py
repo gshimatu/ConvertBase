@@ -1,10 +1,20 @@
-# Lien vers mon github   : https://github.com/gshimatu
-# Auteur                 : Gauthier Shimatu (Le shimatologue)
-# Nom du fichier         : app.py
-# Date de création       : 2025-05-19 21:21:43
-# Description            : Fichier principal de l'application Flask pour la conversion de bases numériques.
-# Version                : 1.1
+"""
+app.py
 
+Application Flask pour la conversion de bases numériques.
+
+Fonctionnalités principales :
+- Fournit une interface web pour convertir des nombres entre les bases binaire, octale, décimale et hexadécimale.
+- API RESTful (/api/convert) permettant la conversion de valeurs envoyées en JSON.
+- Validation des entrées selon la base sélectionnée.
+- Conversion bidirectionnelle entre toutes les bases supportées.
+- Affichage des résultats de conversion et gestion des erreurs côté serveur.
+
+Auteur : Gauthier Shimatu (Le shimatologue)
+Lien GitHub : https://github.com/gshimatu
+Version : 1.1
+Date de création : 2025-05-19
+"""
 
 from flask import Flask, request, jsonify, render_template
 
