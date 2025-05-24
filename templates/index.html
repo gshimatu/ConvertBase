@@ -20,13 +20,6 @@
 
     <main class="container mt-4">
         <div class="converter-card p-4 p-md-5 shadow-lg">
-            <div class="form-group">
-                <label for="inputValue" class="input-label">Entrez la valeur à convertir :</label>
-                <input type="text" class="form-control form-control-lg input-field" id="inputValue" placeholder="Sélectionnez une base pour commencer" readonly>
-                <small id="inputError" class="form-text text-danger error-message d-none"></small>
-                <small id="selectedBaseInfo" class="form-text text-muted mt-1"></small>
-            </div>
-
             <div class="base-selection-buttons my-4">
                 <p class="text-center mb-2 button-group-label">Sélectionnez la base d'origine :</p>
                 <div class="btn-group d-flex flex-wrap" role="group" aria-label="Bases de saisie">
@@ -34,7 +27,8 @@
                         <i class="fas fa-barcode"></i> Binaire
                     </button>
                     <button type="button" class="btn base-btn flex-fill m-1" data-base="8" data-pattern="^[0-7]+$" data-placeholder="Valeur octale (0-7)">
-                        <i class="fas fa-dice-d8"></i> Octal </button>
+                        <i class="fas fa-dice-d8"></i> Octal
+                    </button>
                     <button type="button" class="btn base-btn flex-fill m-1" data-base="10" data-pattern="^[0-9]+$" data-placeholder="Valeur décimale (0-9)">
                         <i class="fas fa-list-ol"></i> Décimal
                     </button>
@@ -42,6 +36,12 @@
                         <i class="fas fa-hashtag"></i> Hexadécimal
                     </button>
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="inputValue" class="input-label">Entrez la valeur à convertir :</label>
+                <input type="text" class="form-control form-control-lg input-field" id="inputValue" placeholder="Sélectionnez une base pour commencer" readonly>
+                <small id="inputError" class="form-text text-danger error-message d-none"></small>
+                <small id="selectedBaseInfo" class="form-text text-muted mt-1"></small>
             </div>
 
             <div class="action-buttons my-4 text-center">
