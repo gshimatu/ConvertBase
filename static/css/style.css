@@ -218,7 +218,7 @@ body {
         margin-right: 10px;
     }
     .btn-group.d-flex {
-        flex-direction: column; /* Empiler les boutons de base sur mobile */
+        flex-direction: column; 
     }
     .base-btn.flex-fill.m-1, .action-btn.m-1 {
         width: 100%; /* Pleine largeur pour les boutons sur mobile */
