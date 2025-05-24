@@ -9,10 +9,13 @@ Fonctionnalités principales :
 - Validation des entrées selon la base sélectionnée.
 - Conversion bidirectionnelle entre toutes les bases supportées.
 - Affichage des résultats de conversion et gestion des erreurs côté serveur.
+- Copie individuelle de chaque résultat converti.
+- Affichage détaillé des étapes de conversion pour chaque base cible (octal, décimal, hexadécimal) avec navigation par boutons.
+- Restauration automatique de la dernière valeur saisie et des résultats lors du retour sur la page principale.
 
 Auteur : Gauthier Shimatu (Le shimatologue)
 Lien GitHub : https://github.com/gshimatu
-Version : 1.3
+Version : 2.0
 Date de création : 2025-05-19
 """
 

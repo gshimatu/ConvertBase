@@ -4,7 +4,7 @@
  * Nom du fichier         : script.js
  * Date de création       : 2025-05-19 21:20:55
  * Description            : Fichier JavaScript pour la conversion de bases numériques
- * Version                : 1.3
+ * Version                : 2.0
  */
 
 
