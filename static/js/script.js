@@ -138,6 +138,26 @@ document.addEventListener('DOMContentLoaded', () => {
         clearResults();
     });
 
+    // Fonctionnalité de copie individuelle (Version 1.1)
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetId = btn.getAttribute('data-target');
+            const value = document.getElementById(targetId).textContent;
+            if (value && value !== '-') {
+                navigator.clipboard.writeText(value).then(() => {
+                    btn.classList.remove('btn-outline-secondary');
+                    btn.classList.add('btn-success');
+                    btn.innerHTML = '<i class="fas fa-check"></i>';
+                    setTimeout(() => {
+                        btn.classList.add('btn-outline-secondary');
+                        btn.classList.remove('btn-success');
+                        btn.innerHTML = '<i class="fas fa-copy"></i>';
+                    }, 1200);
+                });
+            }
+        });
+    });
+
     function showError(message) {
         inputErrorField.textContent = message;
         inputErrorField.classList.remove('d-none');
