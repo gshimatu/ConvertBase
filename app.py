@@ -16,9 +16,11 @@ Version : 1.1
 Date de création : 2025-05-19
 """
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect, url_for, session
+import os
 
 app = Flask(__name__)
+app.secret_key = os.environ.get("SECRET_KEY", "change_me")
 
 def to_decimal(value, base):
     """Convertit une valeur d'une base donnée vers la base décimale."""
@@ -41,9 +43,33 @@ def from_decimal(value, base):
         return hex(value)[2:].upper()
     return None
 
+def to_decimal_steps(value_str, base):
+    """Convertit une valeur en décimal en détaillant les étapes."""
+    steps = []
+    value_str = value_str.lower()
+    chars = list(value_str)
+    chars.reverse()
+    total = 0
+    for i, c in enumerate(chars):
+        if base == 16:
+            n = int(c, 16)
+        else:
+            n = int(c)
+        step = f"{c} × {base}^{i} = {n * (base ** i)}"
+        steps.append(step)
+        total += n * (base ** i)
+    steps.reverse()
+    steps.append(f"Total = {total}")
+    return total, steps
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/steps')
+def steps():
+    steps = session.get("steps", [])
+    return render_template("steps.html", steps=steps)
 
 @app.route('/api/convert', methods=['POST'])
 def convert_api():
@@ -76,7 +102,8 @@ def convert_api():
     if not all(char in valid_chars[from_base] for char in input_value_str):
         return jsonify({"error": f"La valeur '{input_value_str}' contient des caractères invalides pour la base {from_base}"}), 400
         
-    decimal_value = to_decimal(input_value_str, from_base)
+    decimal_value, steps = to_decimal_steps(input_value_str, from_base)
+    session["steps"] = steps
 
     if decimal_value is None:
         return jsonify({"error": f"Impossible de convertir '{input_value_str}' de la base {from_base} en décimal."}), 400

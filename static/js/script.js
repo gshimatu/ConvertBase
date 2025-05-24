@@ -158,6 +158,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.getElementById('convertBtn').addEventListener('click', function() {
+        document.getElementById('showStepsBtn').disabled = false;
+    });
+
+    const showStepsBtn = document.getElementById('showStepsBtn');
+
+    showStepsBtn.addEventListener('click', function() {
+        showStepsBtn.disabled = true;
+        const originalHTML = showStepsBtn.innerHTML;
+        showStepsBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Chargement...';
+        setTimeout(() => {
+            window.location.href = '/steps';
+            showStepsBtn.innerHTML = originalHTML;
+            showStepsBtn.disabled = false;
+        }, 600); // Petite pause pour l'animation
+    });
+
     function showError(message) {
         inputErrorField.textContent = message;
         inputErrorField.classList.remove('d-none');

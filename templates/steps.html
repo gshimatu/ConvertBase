@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étapes de conversion</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/static/images/fav-icon.png" type="image/x-icon">
+</head>
+<body>
+    <header class="app-header">
+        <div class="container d-flex justify-content-center align-items-center py-3">
+            <img src="/static/images/logo.png" alt="Logo" class="header-logo mr-3" width="50" height="50">
+            <h1 class="app-title mb-0">Étapes de Conversion</h1>
+        </div>
+    </header>
+    <main class="container mt-4">
+        <div class="converter-card p-4 p-md-5 shadow-lg">
+            <h2 class="mb-4 text-center"><i class="fas fa-list-ol"></i> Détail des étapes</h2>
+            <div id="stepsContent">
+                <!-- Les étapes seront injectées ici -->
+                {% if steps %}
+                    <ol class="list-group list-group-numbered">
+                        {% for etape in steps %}
+                        <li class="list-group-item">{{ etape }}</li>
+                        {% endfor %}
+                    </ol>
+                {% else %}
+                    <div class="alert alert-info text-center">
+                        Aucune étape à afficher.
+                    </div>
+                {% endif %}
+            </div>
+            <div class="text-center mt-4">
+                <a href="/" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </main>
+    <footer class="app-footer text-center py-4 mt-5">
+        <div class="mb-2">
+            <a href="https://github.com/gshimatu" target="_blank" rel="noopener" class="mx-2 text-light" title="GitHub">
+                <i class="fab fa-github fa-lg"></i>
+            </a>
+            <a href="https://facebook.com/" target="_blank" rel="noopener" class="mx-2 text-light" title="Facebook">
+                <i class="fab fa-facebook fa-lg"></i>
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="mx-2 text-light" title="LinkedIn">
+                <i class="fab fa-linkedin fa-lg"></i>
+            </a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener" class="mx-2 text-light" title="Instagram">
+                <i class="fab fa-instagram fa-lg"></i>
+            </a>
+        </div>
+        <p class="mb-0">&copy; <span id="currentYear"></span> Gauthier Shimatu (Le Shimatologue). Tous droits réservés.</p>
+        <p class="mb-0">Convertisseur de Bases Numériques v1.0</p>
+    </footer>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
