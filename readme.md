@@ -97,7 +97,7 @@ Utilisez la commande : `python app.py`
 * Conversion pour d'autres bases (par exemple, base 4 ou encore 32)
 * Affichage des étapes de calcul de la conversion
 * Historique des conversions récentes (En utilisant le LocalStoage du navigateur)
-* Options de copie individuelle pour chaque résultat converti
+* Options de copie individuelle pour chaque résultat convertir
 
 ## Contribution
 
