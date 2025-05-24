@@ -112,6 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 resultOctal.textContent = data.results.octal;
                 resultDecimal.textContent = data.results.decimal;
                 resultHexadecimal.textContent = data.results.hexadecimal.toUpperCase();
+
+                // Sauvegarde dans le localStorage
+                localStorage.setItem('lastInputValue', inputValue.value);
+                localStorage.setItem('lastResults', JSON.stringify(data.results));
             } else {
                 showError(data.error || "Erreur lors de la conversion.");
                 clearResults();
@@ -214,4 +218,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Restaure la dernière valeur et les résultats si présents
+    const lastInputValue = localStorage.getItem('lastInputValue');
+    const lastResults = localStorage.getItem('lastResults');
+    if (lastInputValue) {
+        inputValue.value = lastInputValue;
+    }
+    if (lastResults) {
+        const results = JSON.parse(lastResults);
+        resultBinary.textContent = results.binary;
+        resultOctal.textContent = results.octal;
+        resultDecimal.textContent = results.decimal;
+        resultHexadecimal.textContent = results.hexadecimal.toUpperCase();
+    }
 });
