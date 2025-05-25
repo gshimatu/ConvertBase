@@ -48,6 +48,8 @@ Parmi mes fonctionnalités, il y a :
 
 ## Structure de mon projet
 
+```
+
 /ConvertBase
 |------ static/
 |   |------ css/
@@ -66,6 +68,7 @@ Parmi mes fonctionnalités, il y a :
 |------ app.py
 |
 
+```
 ## Objectif du projet
 
 ce projet vise à fournir un outil pratique et éducatif pour la conversion entre les bases numériques courantes.
@@ -78,7 +81,7 @@ Il démontre également l'intégration d'un frontend interactif avec une API bac
 [Image demo 3](demo_images/images_demo3.PNG)
 [Image demo 4](demo_images/images_demo4.PNG)
 
-Lien de l'application en ligne : [https://convertbase.up.railway.app/](https://convertbase.up.railway.app/)
+`Lien de l'application en ligne : [https://convertbase.up.railway.app/](https://convertbase.up.railway.app/)`
 
 ## Installation et utilisation en locale
 
