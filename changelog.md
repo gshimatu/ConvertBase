@@ -21,7 +21,7 @@
 ### Corrections
 
 - Correction de bugs d’accessibilité HTML (structure des listes d’étapes).
-- Correction de la restauration des résultats lors de la navigation entre les pages.
+- Correction de la restauration des résultats lors de la navigation entre les pages.  
 
 ---
 
